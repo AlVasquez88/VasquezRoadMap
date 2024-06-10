@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>770</x>
+      <y>150</y>
+      <w>330</w>
+      <h>400</h>
+    </coordinates>
+    <panel_attributes>	Chicken
+
+--
+- chickenName: String
+- hearts: Integer
+- isHappy: Boolean
+- isAlive: Boolean
+- seedWeight: Double
+--
++ setChickenName(String chickenName) : Void
++ Chicken(String chickenName, Double seedWeight) Return String and Return Double
++ getChickenName() : Return String
++ getHearts() : Return Integer
++ getSeedWeight() : Return Double
++ feed(amount: Double): Void or Double or Boolean
++ playWithChickken() : Void or Boolean
++ hit():Void
++ play(anotherChicken: Chicken) Void
++getEggs(): Integer
++toString(): Return String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>180</y>
+      <w>400</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>ChickenCraft
+--
++ Sin: Scanner
++ running: Boolean
++ Chicken(chicken1): String or Integer or Double 
++ Chicken(chicken2): String or Integer or Double
++ Chicken(chicken3): String or Integer or Double
+--
++ chickenChoice: Integer
++ selectedChicken: String
++ setChickenName(selecetedChicken): String
++ getChickenName(): String
++ seed: Double
++ feed(seed): Double
++ secondChicken: Integer
++ playWithChicken(chicken1, chicken2, chicken3): String
++ hit(): Integer
++ isAlive(): Boolean
++ eggs: Integer
++ getEggs(): Integer</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>300</y>
+      <w>330</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;310.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>50</y>
+      <w>570</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Chicken UML Diagram - Alvin Vasquez, 000857238</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

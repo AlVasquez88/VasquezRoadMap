@@ -1,0 +1,236 @@
+import java.util.Scanner;
+
+public class ChickenCraft {
+    public static void main(String[] args) {
+        /**@author: Alvin Vasquez, 000857238
+         * @programDetails:This program allows the user to rename and
+         *      * interact with the chickens while maintaining its health and happiness.
+         *      * @version:ChickenCraft.java
+         *      *          Chicken.java
+         *      * created: May 26, 2024
+         *      * */
+        //Establishing scanner import and assigning sin as new scanner
+        Scanner sin = new Scanner(System.in);
+        //setting boolean running variable as true
+        boolean running = true;
+        //setting chicken1, chicken2, and chicken3 as variables under Chicken method (default chicken)
+        Chicken chicken1 = new Chicken();
+        Chicken chicken2 = new Chicken();
+        Chicken chicken3 = new Chicken();
+
+        //creating User interaction menu with a do while loop
+        while (running) {
+            //Title of program
+            System.out.println("Welcome to the World of ChickenCraft!");
+
+            //Displaying default chickens with ENTER key to continue
+            System.out.println("Chickens:\n1. "+ chicken1 + "\n2. " + chicken2 + "\n3. " + chicken3 + "\nPress ENTER to continue.\n");
+            sin.nextLine();//new line
+
+            //Inputting user menu
+            System.out.println("Please select a number from the following options:");
+            System.out.println("1. Rename a chicken");
+            System.out.println("2. Feed");
+            System.out.println("3. Play");
+            System.out.println("4. Hit");
+            System.out.println("5. Get Eggs");
+            System.out.println("6. quit");
+
+            //Establishing the option variable with a switch statement
+            String option = sin.next();
+            sin.nextLine();//new line
+
+            switch (option) {
+                case "1":
+                    //inputting chicken selector
+                    int chickenChoice;
+                    System.out.println("Which chicken(select a number between 1, 2, or 3)? ");
+                    System.out.println("1. " + chicken1.getChickenName() + "\n2. " + chicken2.getChickenName() + "\n3. " + chicken3.getChickenName());
+                    chickenChoice = sin.nextInt();
+                    sin.nextLine();//new line
+                    if (chickenChoice == 1) {
+                        System.out.print("Rename the chicken:\n");
+                        String selectedChicken = sin.nextLine();
+                        chicken1.setChickenName(selectedChicken);
+                        sin.nextLine();//new line
+                        //Display new name for chicken1
+                        System.out.println(chicken1.getChickenName() + " has been renamed!");
+                    } else if (chickenChoice == 2) {
+                        System.out.print("Rename the chicken:\n");
+                        String selectedChicken = sin.nextLine();
+                        chicken2.setChickenName(selectedChicken);
+                        //Display new name for chicken1
+                        System.out.println(chicken2.getChickenName() + " has been renamed!");
+                    } else if (chickenChoice == 3) {
+                        System.out.print("Rename the chicken:\n");
+                        String selectedChicken = sin.nextLine();
+                        chicken3.setChickenName(selectedChicken);
+                        //Display new name for chicken1
+                        System.out.println(chicken3.getChickenName() + " has been renamed!");
+                    } else {
+                        //if the user selects different numbers from the chicken selector
+                        System.out.println("Invalid chicken choice.");
+                    }
+                    sin.nextLine();//new line
+                    break;
+                case "2":
+                    //inputting chicken selector
+                    System.out.println("Which chicken(select a number between 1, 2, or 3)? ");
+                    System.out.println("1. " + chicken1.getChickenName() + "\n2. " + chicken2.getChickenName() + "\n3. " + chicken3.getChickenName());
+                    chickenChoice = sin.nextInt();
+                    //inputting amount of seed for chicken1 with if/else statement
+                    if (chickenChoice == 1) {
+                        System.out.print("Enter the amount of seed to feed: ");
+                        double seed = sin.nextDouble();
+                        if(!chicken1.isAlive()) {
+                            System.out.println(chicken1.getChickenName() + " has died from overeating!");
+                        } else {
+                            chicken1.feed(seed);
+                            System.out.println(chicken1.getChickenName() + "'s current status: " +chicken1.getSeedWeight()+ "kg, Happiness: " +chicken1.isHappy());
+                        }
+                    }
+                    //inputting amount of seed for chicken2 with if/else statement
+                    if (chickenChoice == 2) {
+                    System.out.print("Enter the amount of seed to feed: ");
+                    double seed = sin.nextDouble();
+                    if(!chicken2.isAlive()) {
+                        System.out.println(chicken2.getChickenName() + " has died from overeating!");
+                    } else {
+                        chicken2.feed(seed);
+                        System.out.println(chicken2.getChickenName() + "'s current status: " +chicken2.getSeedWeight()+ "kg, Happiness: " +chicken2.isHappy());
+                    }
+                    }
+                    //inputting amount of seed for chicken3 with if/else statement
+                    if (chickenChoice == 3) {
+                        System.out.print("Enter the amount of seed to feed: ");
+                        double seed = sin.nextDouble();
+                        if(!chicken3.isAlive()) {
+                            System.out.println(chicken3.getChickenName() + " has died from overeating!");
+                        } else {
+                            chicken2.feed(seed);
+                            System.out.println(chicken3.getChickenName() + "'s current status: " +chicken3.getSeedWeight()+ "kg, Happiness: " +chicken3.isHappy());
+                        }
+                    }
+                    //If the user decides to select other numbers from the chicken selector
+                    if (chickenChoice <= 0 || chickenChoice >= 4) {
+                        System.out.println("Invalid chicken choice.");
+                    }
+                    sin.nextLine();
+                    break;
+                case "3":
+                    //Inputting 1st chicken selector with if/else statement
+                    System.out.print("select the first chicken to play with (1. " +chicken1.getChickenName()+ "\n2. " +chicken2.getChickenName()+ "\n3. " +chicken3.getChickenName());
+                    chickenChoice = sin.nextInt();
+                    //Inputting 2nd chicken selector with if/else statement
+                    int secondChicken;
+                    if (chickenChoice == 1) {
+                        System.out.println(chicken1 + " is selected.");
+                        System.out.print("Choose another chicken:\n2. " +chicken2.getChickenName()+"\n3. " +chicken3.getChickenName());
+                        secondChicken = sin.nextInt();
+                        if (secondChicken == 2) {
+                            //displaying chicken 1 and 2 playing together
+                            chicken1.playWithChicken(chicken2);
+                            System.out.println(chicken1.getChickenName() + "and " +chicken2.getChickenName()+ " are playing together.");
+                        } else if (secondChicken == 3) {
+                            //displaying chicken 1 and 2 playing together
+                            chicken1.playWithChicken(chicken3);
+                            System.out.println(chicken1.getChickenName() + "and " +chicken3.getChickenName()+ " are playing together.");
+                        }
+                    } else if (chickenChoice == 2) {
+                        System.out.println(chicken2.getChickenName() + " is selected.");
+                        System.out.print("Choose another chicken:\n1. " +chicken1.getChickenName()+"\n3. " +chicken3.getChickenName());
+                        secondChicken = sin.nextInt();
+                        if (secondChicken == 1) {
+                            //displaying chicken 2 and 1 playing together
+                            chicken2.playWithChicken(chicken1);
+                            System.out.println(chicken2.getChickenName() + "and " +chicken1.getChickenName()+ " are playing together.");
+                        } else if (secondChicken == 3) {
+                            //displaying chicken 2 and 3 playing together
+                            chicken2.playWithChicken(chicken3);
+                            System.out.println(chicken2.getChickenName() + "and " +chicken3.getChickenName()+ " are playing together.");
+                        }
+                    } else if (chickenChoice == 3) {
+                        System.out.println(chicken3.getChickenName() + " is selected.");
+                        System.out.print("Choose another chicken:\n1. " +chicken1.getChickenName()+"\n2. " +chicken2.getChickenName());
+                        secondChicken = sin.nextInt();
+                        if (secondChicken == 2) {
+                            //displaying chicken 3 and 2 playing together
+                            chicken3.playWithChicken(chicken2);
+                            System.out.println(chicken3.getChickenName() + "and " +chicken2.getChickenName()+ " are playing together.");
+                        } else if (secondChicken == 1) {
+                            //displaying chicken 3 and 1 playing together
+                            chicken3.playWithChicken(chicken1);
+                            System.out.println(chicken3.getChickenName() + "and " +chicken1.getChickenName()+ " are playing together.");
+                        }
+                    } else {
+                        System.out.println("Invalid chicken choice.");
+                    }
+                    sin.nextLine();
+                    break;
+                case "4":
+                    //Inputting chicken selector
+                    System.out.println("Select a chicken to hit:\n1. " +chicken1.getChickenName()+ "\n2. " +chicken2.getChickenName()+ "\n3. " +chicken3.getChickenName());
+                    chickenChoice = sin.nextInt();
+                    //Determining if chicken1, chicken2 or chicken3 survives the hit using if/else statement
+                    if (chickenChoice == 1) {
+                        System.out.println(chicken1.getChickenName() + " is selected.");
+                        chicken1.hit();
+                        //if all four hearts are depleted
+                        if (!chicken1.isAlive()) {
+                            System.out.println(chicken1.getChickenName() + " has died.");
+                        } else {
+                            System.out.println(chicken1.getChickenName() + " is bruised. Health remaining: " + chicken1.getHearts());
+                        }
+                    } else if (chickenChoice == 2) {
+                        System.out.println(chicken2.getChickenName() + " is selected.");
+                        chicken2.hit();
+                        //if all four hearts are depleted
+                        if (!chicken2.isAlive()) {
+                            System.out.println(chicken2.getChickenName() + " has died.");
+                        } else {
+                            System.out.println(chicken2.getChickenName() + " is bruised. Health remaining: " + chicken2.getHearts());
+                        }
+                    } else if (chickenChoice == 3) {
+                        System.out.println(chicken3.getChickenName() + " is selected.");
+                        chicken3.hit();
+                        //if all four hearts are depleted
+                        if (!chicken3.isAlive()) {
+                            System.out.println(chicken3.getChickenName() + " has died.");
+                        } else {
+                            System.out.println(chicken3.getChickenName() + " is bruised. Health remaining: " + chicken3.getHearts());
+                        }
+                    } else {
+                        System.out.println("Invalid chicken choice.");
+                    }
+                    sin.nextLine();
+                    break;
+                case "5":
+                    //Inputting chicken selector
+                    System.out.println("select which chicken to get eggs from:\n1. " +chicken1.getChickenName()+ "\n2. " +chicken2.getChickenName()+ "\n3. " +chicken3.getChickenName());
+                    chickenChoice = sin.nextInt();
+                    //Displaying amount of eggs obtained from the selected variable of chicken1, chicken2, or chicken3
+                    if (chickenChoice == 1) {
+                        int eggs = chicken1.getEggs();
+                        System.out.println("You obtained " +eggs+ " eggs from " +chicken1.getChickenName() + ".");
+                    } else if (chickenChoice == 2) {
+                        int eggs = chicken2.getEggs();
+                        System.out.println("You obtained " +eggs+ " eggs from " +chicken2.getChickenName() + ".");
+                    } else if (chickenChoice == 3) {
+                        int eggs = chicken3.getEggs();
+                        System.out.println("You obtained " +eggs+ " eggs from " +chicken3.getChickenName() + ".");
+                    } else {
+                        System.out.println("Invalid chicken choice.");
+                    }
+                    sin.nextLine();//new line
+                    break;
+                case "6":
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Invalid option. Please select an option from 1 to 6.");
+                    break;
+            }
+        }
+        sin.close();
+    }
+}

@@ -1,0 +1,112 @@
+/**@author: Alvin Vasquez, 000857238
+ * @programDetails:This program allows the user to rename and
+ *      * interact with the chickens while maintaining its health and happiness.
+ *      * @version:ChickenCraft.java
+ *      *          Chicken.java
+ *      * created: May 26, 2024
+ *      * */
+public class Chicken {
+    //Establsihing constants
+    private String chickenName;
+    private int hearts;
+    private boolean isHappy;
+    private static boolean isAlive;
+    private double seedWeight;
+//creating setChickenName for renaming chickens
+    public void setChickenName(String chickenName){
+        if (isAlive){
+            this.chickenName = chickenName;
+        }
+
+    }
+    //creating isHappy to check happiness of the chickens
+    public boolean isHappy(){
+        return isHappy;
+    }
+    //creating isAlive to check survivability of the chickens
+    public boolean isAlive(){
+        return isAlive;
+    }
+    //Default Chicken
+    public Chicken(){
+        this.chickenName = "Nancy";
+        this.hearts = 4;
+        this.seedWeight = 0.1;
+        this.isHappy = true;
+        this.isAlive = true;
+    }
+    //Full display of chicken
+    public Chicken(String chickenName, double seedWeight){
+        this.chickenName = chickenName;
+        this.seedWeight = seedWeight;
+        this.isHappy = true;
+        this.isAlive = true;
+    }
+    //For displaying name of the chicken from Chicken method
+    public String getChickenName(){
+        return chickenName;
+    }
+    //For displaying the amount of hearts from Chicken()
+    public int getHearts(){
+        return hearts;
+    }
+    //For displaying seed weight consumed through the Chicken method
+    public double getSeedWeight(){
+        return seedWeight;
+    }
+    //method for the quantity of seed if the chicken overeats
+    public void feed(double seed){
+        if (isAlive){
+            this.seedWeight += seed;
+            if (this.seedWeight > 2){
+                this.isAlive = false;
+                this.isHappy = false;
+            } else {
+                if (this.hearts < 4) {
+                    this.hearts++;
+                }
+            }
+        }
+    }
+    //method for playing with other chickens
+    public void playWithChicken(Chicken other) {
+        if (isAlive && other.isAlive) {
+            this.isHappy = true;
+            other.isHappy = true;
+        }
+    }
+    //method for killing a chicken if it reaches to 0 or making the chicken sad if it survives.
+    public void hit(){
+        if (isAlive) {
+            this.hearts--;
+            this.isHappy = false;
+            if (this.hearts <= 0) {
+                this.isAlive = false;
+            }
+        }
+    }
+    //method for obtaining the amount of eggs from the amount of seeds and happiness
+    public int getEggs() {
+        if (isAlive) {
+            int eggs = (int) (seedWeight / 0.25);
+            if (isHappy) {
+                eggs *= 2;
+            }
+            seedWeight -= eggs * 0.25;
+            isHappy = false;
+            return eggs;
+        }
+        return 0;
+    }
+//method that displays the entire Chicken method.
+    @Override
+    public String toString(){
+        return String.format("%s %s Chicken %s: %.1fkg seeds, %d hearts",
+                isHappy ? "Happy" : "Sad",
+                isAlive ? "" : "Dead",
+                chickenName,
+                seedWeight,
+                hearts);
+
+    }
+}

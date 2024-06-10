@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>350</x>
+      <y>250</y>
+      <w>330</w>
+      <h>280</h>
+    </coordinates>
+    <panel_attributes>	Chicken
+
+--
+- chickenName: String
+- hearts: Integer
+- isHappy: Boolean
+- isAlive: Boolean
+- seedWeight: Double
+--
++ feed(amount: Double): Void or Double or Boolean
++ hit():Void
++ play(anotherChicken: Chicken) Void
++getEggs(): Integer
++toString(): Return String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
